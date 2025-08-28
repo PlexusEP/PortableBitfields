@@ -60,7 +60,7 @@ class Bitfields {
       auto mask{field_masks[i]};
       auto masked_value{mask & preload};
       auto shift{field_shifts[i]};
-      field_values[i] = masked_value >> shift;
+      field_values[i] = static_cast<UnderlyingType>(masked_value >> shift);
     }
   }
 
@@ -124,7 +124,7 @@ class Bitfields {
       if (field_size == UnderlyingTypeBitSize) {
         masks[i] = static_cast<UnderlyingType>(~0x0);
       } else {
-        masks[i] = (one << field_size) - 1;
+        masks[i] = static_cast<UnderlyingType>((one << field_size) - 1);
       }
     }
 
@@ -137,7 +137,7 @@ class Bitfields {
     for (unsigned i{0}; i < NumberOfFields; ++i) {
       auto mask{non_shifted_field_masks[i]};
       auto shift{field_shifts[i]};
-      masks[i] = mask << shift;
+      masks[i] = static_cast<UnderlyingType>(mask << shift);
     }
 
     return masks;
