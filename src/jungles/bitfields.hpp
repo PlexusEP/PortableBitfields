@@ -73,8 +73,7 @@ class Bitfields {
     return result;
   }
 
-  //! const Bitfields do not need overflow to be checked, because it's
-  //! impossible to overflow with construction only.
+  // const Bitfields do not need overflow to be checked, because it's impossible to overflow with construction only.
   template <auto FieldId>
   constexpr const UnderlyingType& at() const noexcept {
     constexpr auto idx{find_field_index<FieldId>()};
@@ -115,10 +114,9 @@ class Bitfields {
 
     for (unsigned i{0}; i < NumberOfFields; ++i) {
       auto field_size{static_cast<UnderlyingType>(field_sizes[i])};
-      // Funny! This is needed, because if we write: (1 << field_size) compiler
-      // will use type 'int' for one, and shifting (int << uint64_t) is
-      // undefined behavior; see:
-      // https://stackoverflow.com/questions/10499104/is-shifting-more-than-32-bits-of-a-uint64-t-integer-on-an-x86-machine-undefined#answer-10499371
+      // Funny! This is needed, because if we write: (1 << field_size) compilerwill use type 'int' for one, and shifting
+      // (int << uint64_t) is undefined behavior;
+      // see:https://stackoverflow.com/questions/10499104/is-shifting-more-than-32-bits-of-a-uint64-t-integer-on-an-x86-machine-undefined#answer-10499371
       auto one{static_cast<UnderlyingType>(1)};
       masks[i] = static_cast<UnderlyingType>((one << field_size) - 1);
     }
