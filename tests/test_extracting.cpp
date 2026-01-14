@@ -38,8 +38,15 @@ TEST_CASE("Extracts bitfields on one-byte long bitfield", "[extract]") {
   }
 
   SECTION("For each field having size one") {
-    Bitfields<uint8_t, Field<Reg::field1, 1>, Field<Reg::field2, 1>, Field<Reg::field3, 1>, Field<Reg::field4, 1>,
-              Field<Reg::field5, 1>, Field<Reg::field6, 1>, Field<Reg::field7, 1>, Field<Reg::field8, 1>>
+    Bitfields<uint8_t,
+              Field<Reg::field1, 1>,
+              Field<Reg::field2, 1>,
+              Field<Reg::field3, 1>,
+              Field<Reg::field4, 1>,
+              Field<Reg::field5, 1>,
+              Field<Reg::field6, 1>,
+              Field<Reg::field7, 1>,
+              Field<Reg::field8, 1>>
         bf;
 
     bf.at<Reg::field1>() = 0b1;

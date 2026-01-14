@@ -22,6 +22,11 @@ BasedOnStyle: Google
 # Otherwise, the tool appears to revert to some default configuration.
 ColumnLimit: 120
 
+# Prevents clang-format from packing parameters/arguments onto a single line 
+# if they don't fit within the ColumnLimit.
+BinPackParameters: false
+BinPackArguments: false 
+
 # Allow PC-lint message suppression with single-line comments. The "lint"
 # at the start of the comment must lie immediately adjacent to the "//".
 CommentPragmas: '^lint'

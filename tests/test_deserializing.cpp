@@ -18,9 +18,15 @@ TEST_CASE("Fields are deserialized/loaded", "[desieralization]") {
   }
 
   SECTION("1-bit size bitfields are loaded") {
-    using OneBitSizedBitfieldsRegister =
-        Bitfields<uint8_t, Field<Reg::field1, 1>, Field<Reg::field2, 1>, Field<Reg::field3, 1>, Field<Reg::field4, 1>,
-                  Field<Reg::field5, 1>, Field<Reg::field6, 1>, Field<Reg::field7, 1>, Field<Reg::field8, 1>>;
+    using OneBitSizedBitfieldsRegister = Bitfields<uint8_t,
+                                                   Field<Reg::field1, 1>,
+                                                   Field<Reg::field2, 1>,
+                                                   Field<Reg::field3, 1>,
+                                                   Field<Reg::field4, 1>,
+                                                   Field<Reg::field5, 1>,
+                                                   Field<Reg::field6, 1>,
+                                                   Field<Reg::field7, 1>,
+                                                   Field<Reg::field8, 1>>;
 
     OneBitSizedBitfieldsRegister reg{0b00110101};
 
